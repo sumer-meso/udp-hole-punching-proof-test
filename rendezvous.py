@@ -3,6 +3,9 @@ import threading
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.connect(('1.1.1.1', 0))
+hostip = sock.getsockname()[0]
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind((hostip, 0))
 
 
 def listen():
