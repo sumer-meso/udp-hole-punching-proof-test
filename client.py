@@ -36,7 +36,7 @@ print('Ready to exchange messages\n')
 def listen():
     while True:
         data = sock.recv(1024)
-        print('\rpeer: {}\n'.format(data.decode()), end='')
+        print('\rpeer: {}\n>'.format(data.decode()), end='')
 
 listener = threading.Thread(target=listen, daemon=True)
 listener.start()

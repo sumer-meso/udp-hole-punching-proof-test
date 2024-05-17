@@ -8,13 +8,13 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((hostip, 0))
 
 
+print('Listening on {}:{}.'.format(sock.getsockname()[0], sock.getsockname()[1]))
+print('Peers command: ./client.py {} {}'.format(sock.getsockname()[0], sock.getsockname()[1]))
 def listen():
     while True:
         clients = []
 
         while True:
-            print('Listening on {}:{}.'.format(sock.getsockname()[0], sock.getsockname()[1]))
-            print('Peers command: ./client.py {} {}.'.format(sock.getsockname()[0], sock.getsockname()[1]))
             data, address = sock.recvfrom(128)
 
             print('connection from: {}'.format(address))
