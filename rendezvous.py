@@ -2,7 +2,8 @@ import socket
 import threading
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock.bind((socket.gethostbyname(socket.gethostname()), 0))
+sock.connect(('1.1.1.1', 0))
+
 
 def listen():
     while True:
