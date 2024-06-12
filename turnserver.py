@@ -13,19 +13,21 @@ def listen():
         while True:
             data, address = sock.recvfrom(1024)
 
-            print('connection from: {} with {}'.format(address, data))
+            print('Connection from: {} with {}'.format(address, data))
             clients.append(address)
 
             if len(clients) == 2:
-                print('got 2 clients, sending things to each other.')
+                print('Got 2 clients, will send things to each other.')
                 break
 
         while True:
-            data, address = sock.recvfrom(1024)
+            data, address = sock.recvfrom(8192)
             print('Got something from: {} with {}'.format(address, data))
             if address == clients[0]:
+                print('Sending to the other side {}'.format(clients[1]))
                 sock.sendto(data, clients[1])
             else:
+                print('Sending to the other side {}'.format(clients[0]))
                 sock.sendto(data, clients[0])
 
 
